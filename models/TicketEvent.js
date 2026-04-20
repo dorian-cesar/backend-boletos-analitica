@@ -1,11 +1,20 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../config/db');
 
 const TicketEvent = sequelize.define('TicketEvent', {
-  booking_reference: { type: DataTypes.STRING(20), allowNull: false },
+  id: {
+    type: DataTypes.BIGINT,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  // 🧾 Identificación
+  ticket_number: {
+    type: DataTypes.STRING(20),
+    unique: true
+  },
   connection_id: DataTypes.STRING(20),
-  trip_type: DataTypes.ENUM('one-way', 'round-trip'),
-  direction: DataTypes.ENUM('outbound', 'return'),
+
+  // 👤 Pasajero
   first_name: DataTypes.STRING(100),
   last_name: DataTypes.STRING(100),
   document_number: DataTypes.STRING(50),
@@ -13,31 +22,64 @@ const TicketEvent = sequelize.define('TicketEvent', {
   document_type_name: DataTypes.STRING(50),
   email: DataTypes.STRING(150),
   phone: DataTypes.STRING(50),
+  occupation: DataTypes.STRING(100),
+  birth_date: DataTypes.DATEONLY,
+  gender: DataTypes.STRING(10),
+  nationality: DataTypes.STRING(10),
+  country: DataTypes.STRING(10),
+
+  // 🪑 Asiento
   seat_id: DataTypes.STRING(20),
-  seat_number: { type: DataTypes.STRING(10) },
+  seat_number: DataTypes.STRING(10),
   seat_row: DataTypes.INTEGER,
   seat_column: DataTypes.INTEGER,
   seat_floor: DataTypes.INTEGER,
   seat_type: DataTypes.STRING(20),
   seat_status: DataTypes.STRING(20),
   quality_code: DataTypes.STRING(10),
-  trip_id: { type: DataTypes.STRING(20) },
+
+  // 🚌 Viaje
+  trip_id: DataTypes.STRING(20),
   origin_id: DataTypes.STRING(10),
   destination_id: DataTypes.STRING(10),
   origin_title: DataTypes.STRING(150),
   destination_title: DataTypes.STRING(150),
+
   departure_date: DataTypes.DATEONLY,
   departure_time: DataTypes.TIME,
   arrival_time: DataTypes.TIME,
+  duration: DataTypes.STRING(20),
+
   bus_type: DataTypes.STRING(50),
   company: DataTypes.STRING(50),
+
+  // 💰 Precios
   seat_price: DataTypes.INTEGER,
   total_booking_price: DataTypes.INTEGER,
-  payment_status: DataTypes.ENUM('pending', 'completed', 'failed')
+
+  // 💳 Pago
+  payment_status: DataTypes.ENUM('pending', 'completed', 'failed'),
+  payment_amount: DataTypes.DECIMAL(10, 2),
+  payment_paid: DataTypes.BOOLEAN,
+  payment_token: DataTypes.STRING(100),
+  payment_hash: DataTypes.STRING(100),
+
+  // 🧠 Metadata
+  created_at: {
+    type: DataTypes.DATE,
+    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+  }
 }, {
   tableName: 'ticket_events',
-  timestamps: false // 'created_at' lo maneja la DB por defecto
+  timestamps: false,
+  indexes: [
+    {
+      unique: true,
+      fields: ['trip_id', 'seat_number']
+    }
+  ]
 });
 
 module.exports = TicketEvent;
+
 

@@ -19,10 +19,10 @@ app.get('/', (req, res) => {
 
 app.use('/api/tickets', ticketRoutes);
 
-// Probar conexión y arrancar
-sequelize.authenticate()
+// Probar conexión y sincronizar
+sequelize.sync({ alter: true })
   .then(() => {
-    console.log('Conectado a MySQL');
+    console.log('Tablas sincronizadas y conectado a MySQL');
     app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
   })
-  .catch(err => console.log('Error DB:', err));
+  .catch(err => console.log('Error al sincronizar la DB:', err));
