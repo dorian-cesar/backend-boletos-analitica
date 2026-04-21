@@ -10,7 +10,7 @@ const TicketEvent = sequelize.define('TicketEvent', {
   // 🧾 Identificación
   ticket_number: {
     type: DataTypes.STRING(20),
-    unique: true
+    unique: 'unique_ticket'
   },
   connection_id: DataTypes.STRING(20),
 
@@ -74,6 +74,7 @@ const TicketEvent = sequelize.define('TicketEvent', {
   timestamps: false,
   indexes: [
     {
+      name: 'unique_seat_trip',
       unique: true,
       fields: ['trip_id', 'seat_number']
     }
