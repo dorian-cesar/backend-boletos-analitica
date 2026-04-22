@@ -45,7 +45,6 @@ const TicketEvent = sequelize.define(
 
     departure_date: DataTypes.DATEONLY,
     departure_time: DataTypes.TIME,
-    arrival_date: DataTypes.DATEONLY,
     arrival_time: DataTypes.TIME,
     duration: DataTypes.STRING(20),
 
