@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/db');
 const ticketRoutes = require('./routes/ticketRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
   res.json({ mensaje: "¡Backend funcionando con Node y Express!" });
 });
 
+app.use('/api/auth', authRoutes);
 app.use('/api/tickets', ticketRoutes);
 
 // Probar conexión y sincronizar

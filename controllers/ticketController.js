@@ -14,6 +14,13 @@ exports.getOne = async (req, res) => {
   } catch (error) { res.status(500).json({ error: error.message }); }
 };
 
+exports.getByTicketNumber = async (req, res) => {
+  try {
+    const ticket = await TicketEvent.findOne({ where: { ticket_number: req.params.ticket_number } });
+    ticket ? res.json(ticket) : res.status(404).json({ error: "Ticket no encontrado" });
+  } catch (error) { res.status(500).json({ error: error.message }); }
+};
+
 exports.create = async (req, res) => {
   try {
     const ticket = await TicketEvent.create(req.body);
