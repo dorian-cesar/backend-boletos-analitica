@@ -62,6 +62,11 @@ const TicketEvent = sequelize.define(
     payment_token: DataTypes.STRING(100),
     payment_hash: DataTypes.STRING(100),
 
+    // 📑 Facturación
+    numero_factura: DataTypes.STRING(50),
+    cdc: DataTypes.STRING(100),
+    timbrado: DataTypes.STRING(50),
+
     // 🧠 Metadata
     created_at: {
       type: DataTypes.DATE,

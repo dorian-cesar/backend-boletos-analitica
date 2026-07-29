@@ -25,7 +25,7 @@ exports.create = async (req, res) => {
   try {
     const ticket = await TicketEvent.create(req.body);
     res.status(201).json(ticket);
-  } catch (error) { res.status(400).json({ error: error.message }); }
+  } catch (error) { res.status(400).json({ error: error.message, details: error.errors ? error.errors.map(e => ({ field: e.path, message: e.message })) : undefined }); }
 };
 
 exports.update = async (req, res) => {
