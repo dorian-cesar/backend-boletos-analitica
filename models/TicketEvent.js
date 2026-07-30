@@ -15,6 +15,7 @@ const TicketEvent = sequelize.define(
       unique: "unique_ticket",
     },
     connection_id: DataTypes.STRING(20),
+    id_pos: DataTypes.STRING(20),
 
     // 👤 Pasajero
     first_name: DataTypes.STRING(100),
