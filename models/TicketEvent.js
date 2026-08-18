@@ -52,6 +52,7 @@ const TicketEvent = sequelize.define(
     bus_type: DataTypes.STRING(50),
     company: DataTypes.STRING(50),
     empresa_transporte: DataTypes.STRING(50),
+    agencia_delta: DataTypes.STRING(10),
 
     // 💰 Precios
     seat_price: DataTypes.INTEGER,

@@ -139,6 +139,7 @@ Obtiene la lista completa de todos los eventos de boleto almacenados.
       "bus_type": "Semicama",
       "company": "Empresa X",
       "empresa_transporte": "Transporte NSA",
+      "agencia_delta": "AG-001",
       "seat_price": 150000,
       "total_booking_price": 150000,
       "payment_status": "completed",
@@ -212,6 +213,7 @@ Crea/registra un nuevo evento de boleto.
     "destination_id": "AGT",
     "company": "Empresa X",
     "empresa_transporte": "Transporte NSA",
+    "agencia_delta": "AG-001",
     "seat_price": 150000,
     "payment_status": "completed",
     "payment_paid": true
