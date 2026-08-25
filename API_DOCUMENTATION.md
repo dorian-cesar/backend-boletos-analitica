@@ -142,6 +142,11 @@ Obtiene la lista completa de todos los eventos de boleto almacenados.
       "agencia_delta": "AG-001",
       "seat_price": 150000,
       "total_booking_price": 150000,
+      "descuento": 20000,
+      "monto_final": 130000,
+      "cargo_por_servicio": 5000,
+      "empresa_convenio": "Itaú",
+      "convenio": "Convenio Empleados Itaú",
       "payment_status": "completed",
       "payment_amount": "150000.00",
       "payment_paid": true,
@@ -215,6 +220,11 @@ Crea/registra un nuevo evento de boleto.
     "empresa_transporte": "Transporte NSA",
     "agencia_delta": "AG-001",
     "seat_price": 150000,
+    "descuento": 20000,
+    "monto_final": 130000,
+    "cargo_por_servicio": 5000,
+    "empresa_convenio": "Itaú",
+    "convenio": "Convenio Empleados Itaú",
     "payment_status": "completed",
     "payment_paid": true
   }
